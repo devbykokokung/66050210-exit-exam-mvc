@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>66050210 ข้อที่ 1</title>
+  </head>
+  <body>
+    <h1>ระบบตรวจสอบคุณภาพอาหาร</h1>
+    <!-- กรอก Input -->
+    <form id="form_food">
+      <input type="text" id="form_food_id" placeholder="กรอกรหัสอาหาร" />
+      <button type="submit">ตรวจสอบ</button>
+      <div id="form_food_error" style="color: red"></div>
+    </form>
+    <!-- ส่วนรายงาน -->
+    <h2>รายงานสถานะคุณภาพอาหาร</h2>
+    <label for="food_type">เลือกประเภทอาหาร:</label>
+    <select id="food_type">
+      <option value="อาหารสด" selected>อาหารสด</option>
+      <option value="อาหารดอง">อาหารดอง</option>
+      <option value="อาหารกระป๋อง">อาหารกระป๋อง</option>
+    </select>
+    <br />
+    <br />
+    <table border="1">
+      <thead>
+        <tr>
+          <th>รหัส</th>
+          <th>วันหมดอายุ</th>
+          <th>สถานะ</th>
+        </tr>
+      </thead>
+      <tbody id="table_food_check">
+        <!-- <tr>
+            <td>รหัส 1</td>
+            <td>01/01/2024</td>
+            <td>ปกติ</td>
+          </tr> -->
+      </tbody>
+    </table>
+    <br />
+    <!-- ส่วนจำลอง database -->
+    <hr />
+    <h2>แสดงข้อมูลในฐานข้อมูล</h2>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>รหัส</th>
+          <th>ประเภทของอาหาร</th>
+          <th>วันหมดอายุ</th>
+        </tr>
+      </thead>
+      <tbody id="table_food_store">
+        <!-- <tr>
+            <td>รหัส 1</td>
+            <td>01/01/2024</td>
+            <td>ปกติ</td>
+          </tr> -->
+      </tbody>
+    </table>
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
