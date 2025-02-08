@@ -1,7 +1,8 @@
 import { validateFood } from "./../controllers/FormController.js"
 import { foodChecker } from "./../controllers/FoodController.js"
+import { displayFoodCheck } from "./FoodView.js"
 
-function FormSubmit(ev) {
+function FormSubmit(ev) { // ฟังก์ชันสำหรับการส่งฟอร์ม
     ev.preventDefault();
     const form = ev.target;
     const id = ev.target.form_food_id.value.trim();
@@ -24,7 +25,12 @@ function FormSubmit(ev) {
         return;
     }
 
+    error_element.innerHTML = "<p style='color :black;'>ตรวจสอบสำเร็จ</p>";
+
     form.reset();
+
+    const food_type = document.getElementById('food_type');
+    displayFoodCheck(food_type.value);
 }
 
 function onLoad() {

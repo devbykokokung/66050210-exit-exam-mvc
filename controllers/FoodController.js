@@ -10,45 +10,45 @@ import {
 } from "./../models/Food.js";
 
 function getFoodStore() {
-    return foodStore().selectAll();
+    return foodStore().selectAll(); // ดึงข้อมูลอาหารทั้งหมดจาก foodStore
 }
 
 function getFoodCheck(type) {
-    return foodCheck().selectByType(type);
+    return foodCheck().selectByType(type); // ดึงข้อมูลการตรวจสอบอาหารตามประเภท
 }
 
 function foodChecker(id) {
-    const food = foodStore().select(id);
+    const food = foodStore().select(id); // ดึงข้อมูลอาหารตาม id
 
     if (!food) {
         return {
             success: false,
-            error_message: 'Food not found',
+            error_message: 'Food not found', // ถ้าไม่พบอาหาร ให้ส่งข้อความแสดงข้อผิดพลาด
         };
     }
 
     let result;
-    console.log(food.food_type);
+    console.log(food.food_type); // แสดงประเภทของอาหารใน console
     
     switch (food.food_type) {
         case 'อาหารสด':
-            result = FreshFoodChecker(food);
+            result = FreshFoodChecker(food); // ตรวจสอบอาหารสด
             break;
         case 'อาหารดอง':
-            result = PickledFoodChecker(food);
+            result = PickledFoodChecker(food); // ตรวจสอบอาหารดอง
             break;
         case 'อาหารกระป๋อง':
-            result = CannedFoodChecker(food);
+            result = CannedFoodChecker(food); // ตรวจสอบอาหารกระป๋อง
             break;
         default:
             return {
                 success: false,
-                error_message: 'Invalid food type  0',
+                error_message: 'Invalid food type', // ถ้าประเภทอาหารไม่ถูกต้อง ให้ส่งข้อความแสดงข้อผิดพลาด
             };
     }
 
     if (!result.success) {
-        return result;
+        return result; // ถ้าผลการตรวจสอบไม่สำเร็จ ให้ส่งผลลัพธ์กลับ
     }
 
     foodCheck().insert({
@@ -56,11 +56,11 @@ function foodChecker(id) {
         food_type: food.food_type,
         expires_date: food.expires_date,
         food_status: result.status,
-        checked_date: new Date().toISOString(),
+        checked_date: new Date().toUTCString(), // บันทึกข้อมูลการตรวจสอบอาหาร
     });
 
     return {
-        success: true,
+        success: true, // ส่งผลลัพธ์ว่าการตรวจสอบสำเร็จ
     };
 }
 

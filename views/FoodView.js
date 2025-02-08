@@ -3,7 +3,7 @@ import {
     getFoodCheck
 } from './../controllers/FoodController.js';
 
-function displayFoodStore() {
+function displayFoodStore() { // ฟังก์ชันสำหรับการแสดงข้อมูลอาหาร
     const data = getFoodStore(); // รับ Database จาก Controller
     const table = document.getElementById('table_food_store');
 
@@ -20,8 +20,8 @@ function displayFoodStore() {
     });
 }
 
-function displayFoodCheck(type) {
-    const data = getFoodCheck(type);
+function displayFoodCheck(type) { // ฟังก์ชันสำหรับการแสดงข้อมูลการตรวจสอบอาหาร
+    const data = getFoodCheck(type); // รับ Database จาก Controller
     const table = document.getElementById('table_food_check');
 
     table.innerHTML = '';
@@ -49,5 +49,6 @@ function onLoad() {
 }
 
 export {
+    displayFoodCheck,
     onLoad
 }
